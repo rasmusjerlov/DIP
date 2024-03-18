@@ -1,0 +1,127 @@
+<!-- GUI.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Yatzy Game</title>
+    <link rel="stylesheet" type="text/css" href="GUI.css" />
+    <script src="Yatzy.js" defer></script>
+</head>
+
+<body>
+    <h1>Yatzy!</h1>
+    <div class="game-container">
+        <div class="dice-container">
+          <img id = "d1" src="dice1.png" class="die" onclick="holdButton('d1')"></img>
+          <img id = "d2" src="dice2.png" class="die" onclick="holdButton('d2')"></img>
+          <img id = "d3" src="dice3.png" class="die" onclick="holdButton('d3')"></img>
+          <img id = "d4" src="dice5.png" class="die" onclick="holdButton('d4')"></img>
+          <img id = "d5" src="dice4.png" class="die" onclick="holdButton('d5')"></img>
+</div>
+   
+
+        
+    </div>
+    <div class="scoreboard">
+        <table>
+          <tr>
+            <th class="kategoriandscore">Kategori</th>
+            <th class="kategoriandscore">Score</th>
+          </tr>
+          <tr>
+            <td>1-s</td>
+            <td><input type="number" value="0" id="1-s" readonly class="inputValue"> </td>
+          </tr>
+          <tr>
+            <td>2-s</td>
+            <td><input type="number" value="0" id="2-s" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>3-s</td>
+            <td><input type="number" value="0" id="3-s" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>5-s</td>
+            <td><input type="number" value="0" id="4-s" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>5-s</td>
+            <td><input type="number" value="0" id="5-s" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>6-s</td>
+            <td><input type="number" value="0" id="6-s" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Sum</td>
+            <td><input type="number" value="0" id="sum" class="bonusandsum" readonly></td>
+            
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Bonus</td>
+            <td><input type="number" value="0" id="bonus" class="bonusandsum" readonly></td>
+          </tr>
+          
+          <tr>
+            <td>One pair</td>
+            <td><input type="number" value="0" id="one-pair" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>Two pairs</td>
+            <td><input type="number" value="0" id="two-pairs" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>Three same</td>
+            <td><input type="number" value="0" id="three-same" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>Four same</td>
+            <td><input type="number" value="0" id="four-same" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>Full house</td>
+            <td><input type="number" value="0" id="full-house" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>Small straight</td>
+            <td><input type="number" value="0" id="small-straight" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>Large straight</td>
+            <td><input type="number" value="0" id="large-straight" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>Chance</td>
+            <td><input type="number" value="0" id="chance" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td>Yatzy</td>
+            <td><input type="number" value="0" id="yatzy" readonly class="inputValue"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td><input type="number" value="0" id="total" readonly></td>
+          </tr>
+          
+          <tr>
+            
+          </tr>
+          
+          
+        </table>
+    </div>
+    <div id="turn" >Turn: </div>
+   
+    <div class="buttons">
+        <button class="roll-button" onclick="playDiceSound()">Roll Dice </button>
+        <button class="new-game-button">Nyt spil</button>
+        
+    </div>
+</body>
+</html>
