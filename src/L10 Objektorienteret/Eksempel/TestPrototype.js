@@ -30,6 +30,10 @@ console.log(minBil.Farve);
 minBil.Farve = "rød";
 console.log(minBil.Farve);
 
+minBil.__proto__.koer = function() {
+    console.log("Dette er den nye koer function");
+}
+
 Bil.prototype.ToString = function() {
     return "Hvor går det langsomt";
 }
