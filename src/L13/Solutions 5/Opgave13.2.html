@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chatklient</title>
-  <link rel="stylesheet" href="opgave12.1.css" />
+  <title>Chatclient</title>
   <script src="get.js" defer></script>
-  <script src="opgave13.2.js" defer></script>
+  <script src="Opgave13.2.js" defer></script>
 </head>
 <body>
-  <div id = 'rum'>
+    <div id = 'rum'>
+    <div id="beskeder">
+    </div>
+    <input type="button" value="Rum1" onclick="visBeskederForRum('Rum1')">
+    <input type="button" value="Rum2" onclick="visBeskederForRum('Rum2')">
+    <input type="button" value="Rum3" onclick="visBeskederForRum('Rum3')">
+    <input type="button" value="Startrum" onclick="visBeskederForRum('Startrum')">
+    </div>
+<br/>
 
-  </div>
-  <div id="beskeder">
+<label>Tekst:</label> <input type="text" id = 'tekst'>
+<label>Chatrum:</label> <input type="text" id = 'chatrum'>
 
-  </div>
-  <br/>
-  <label>Tekst:</label> <input type="text" id = 'tekst'>
-  <label>Chatrum:</label> <input type="text" id = 'chatrum'>
-  <input type="Button" value="Opret" onclick="opretBesked()">
-
+<input type="Button" value="Opret" onclick="opretBesked()">
+<br/>
+<div>
+    <br/>
+    <label>Id: <label> <input type= "text" id= 'id'>
+    <input type="Button" value="Slet" onclick="sletBesked()">
+</div>
 </body>
 </html>

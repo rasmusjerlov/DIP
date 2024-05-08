@@ -2,9 +2,9 @@
 // const soegbeskedUrl = 'https://localhost:44367/api/SoegBeskeder/';
 // const rumUrl = 'https://localhost:44367/api/chatRum/';
 
-const beskedUrl = 'https://beskedserver.azurewebsites.net/api/Beskeder/';
-const soegbeskedUrl = 'https://beskedserver.azurewebsites.net/api/SoegBeskeder/';
-const rumUrl = 'https://beskedserver.azurewebsites.net/api/chatRum/';
+const beskedUrl = 'http://localhost:6969/beskeder';
+const soegbeskedUrl = 'http://localhost:6969/beskeder/';
+const rumUrl = 'http://localhost:6969/beskeder/Rum1';
 
 async function get(url) {
     const respons = await fetch(url);
@@ -63,8 +63,7 @@ async function getRum() {
     return rum;
 }
 
-async function postBesked(afsender, tekst, chatrum) {
-    //let besked = {afsender:afsender, tekst: tekst, chatRum: chatrum };
+async function postBesked(tekst, chatrum) {
     let besked = {tekst: tekst, chatRum: chatrum };
     try {
         let respons = await post(beskedUrl, besked);
@@ -73,6 +72,7 @@ async function postBesked(afsender, tekst, chatrum) {
         console.log(fejl);
     }
 }
+
 async function deleteBesked(id) {
     try {
         let respons = await deLete(beskedUrl + id);
@@ -83,64 +83,44 @@ async function deleteBesked(id) {
 }
 
 
-//mainGetBeskeder();
-//soegBeskeder('Rum1');
-//mainPostBesked();
-//getRum();
-//mainDeleteBesked(1);
-async function visAlleRum() {
-    let rumDiv = document.querySelector("#rum");
-    let rum = await getRum();
-    for (let r of rum) {
-        rumDiv.innerHTML += "<input type=button onclick=\"visBeskederFor('" + r.navn + "')\" value=\"" + r.navn + "\"></input>";
-    }
-}
+async function visBeskederForRum(rum) {
+    let beskederDiv = document.querySelector("#beskeder");
+    beskederDiv.innerHTML = ""; 
 
-async function visBeskederFor(rum) {
     let beskeder = await soegBeskeder(rum);
-    let beskedDiv = document.querySelector("#beskeder");
-    beskedDiv.innerHTML = "";
     let table = document.createElement('table');
-    table.setAttribute("border", "solid");
-    createRow(table, 'id', 'Tekst', 'Chatrum');
+    table.setAttribute("border", "1");
+    createRow(table, 'ID', 'Tekst', 'ChatRum');
     for (let besked of beskeder) {
         createRow(table, besked.id, besked.tekst, besked.chatRum);
     }
-    beskedDiv.appendChild(table);
+    beskederDiv.appendChild(table);
 }
 
-function createRow(table, id, tekst, chatrum) {
-    let tr = document.createElement('tr');
-    let thid = document.createElement('th');
-    if (Number.isFinite(id)) {
-        thid.appendChild(document.createTextNode(id));
-    } else {
-        thid.appendChild(document.createTextNode('Id'));
-    }
-    let thtekst = document.createElement('th');
-    thtekst.appendChild(document.createTextNode(tekst));
-    let thchatrum = document.createElement('th');
-    thchatrum.appendChild(document.createTextNode(chatrum));
-    let thDeleteLink = document.createElement('th');
-    if (Number.isFinite(id)) {
-        let deleteLink = document.createElement('a');
-        deleteLink.innerHTML = 'Slet';
-        deleteLink.setAttribute('onclick', 'deleteBesked("' + id + '");return false;');
-        deleteLink.setAttribute('href', '');
-        thDeleteLink.appendChild(deleteLink);
-    } else {
-        thDeleteLink.appendChild(document.createTextNode('Slet'));
-    }
-    tr.appendChild(thid);
-    tr.appendChild(thtekst);
-    tr.appendChild(thchatrum);
-    tr.appendChild(thDeleteLink);
-    table.appendChild(tr);
+function createRow(table, id, tekst, chatRum) {
+   const row = document.createElement('tr');
+   const idCell = document.createElement('td');
+   const tekstCell = document.createElement('td');
+   const chatRumCell = document.createElement('td');
+
+   idCell.textContent = id;
+   tekstCell.textContent = tekst;
+   chatRumCell.textContent = chatRum;
+
+   row.appendChild(idCell);
+   row.appendChild(tekstCell);
+   row.appendChild(chatRumCell);
+
+   table.appendChild(row);
+   
 }
-function opretBesked() {
+
+function opretBesked(){
     let tekst = document.querySelector("#tekst").value;
     let chatrum = document.querySelector('#chatrum').value;
-    postBesked("Klaus", tekst,chatrum);
+    postBesked(tekst, chatrum)
 }
-
-visAlleRum();
+function sletBesked(){
+    let id = document.querySelector("#id").value;
+    deleteBesked(id)
+}

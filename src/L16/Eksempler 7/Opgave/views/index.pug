@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+html
+  head
+    title= Express-session
+    meta(charset="UTF-8")
+  body
+    h3
+      Velkommen Bøsserøvshop!
+    h2  Products 
+    table 
+      each product in products 
+        tr 
+          td Item: #{product.name} 
+        tr
+          td Price: #{product.price}
+          td Strength : #{product.strength}
+        tr 
+          td 
+            button(onclick=`clickfunction(" ${product.id} ", " ${product.name} ", " ${product.price} ")`) Køb nu din bøsserøv!
+
+        tr 
+          td(colspan=3)
+            hr
+    h3 Table of orders 
+    table 
+      each order in orders 
+        tr 
+          td Order ID: #{order.id}
+          td Item: #{order.name}
+          td Price: #{order.price}
+   
+  script.
+    async function post(url, objekt) {
+        const respons = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(objekt),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (respons.status !== 201) // Created
+            throw new Error(respons.status);
+        return await respons.text();
+    }
+
+    let clickfunction = async (id, name, price) => {
+            try {
+                //- alert ("Hurra");
+                await post("http://localhost:8000/orders", {id, name, price});
+                //- window.location.href = "http://localhost:8000/index";
+            } catch (e) {
+              console.log(e);
+                console.log("Fejl");
+            }
+        }

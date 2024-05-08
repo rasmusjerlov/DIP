@@ -1,0 +1,17 @@
+body 
+
+    //- h2 Object passed from Users.js: 
+    //- p User: #{username}
+    //- p Name: #{name}
+    //- p Email: #{email}
+
+    h3 Users 
+    - var count = 1
+    ul 
+        each user in users 
+            p User #{count}
+            li #{user.username}
+            li #{user.name}
+            li #{user.email}
+            - count = count + 1
+            br

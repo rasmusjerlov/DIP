@@ -1,0 +1,11 @@
+body 
+    h2 Tabel 
+    - var count = 1
+    table
+        each element in results 
+            tr 
+                td #{element.name.first} 
+                td #{element.name.last}
+                td #{element.location.country}
+                - count = count + 1
+    p Udskrevne elementer: #{count}
