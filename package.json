@@ -1,8 +1,10 @@
 {
   "name": "DIP",
   "requires": true,
+  "type": "module",
   "packages": {},
   "dependencies": {
     "express": "^4.19.2"
   }
 }
+

@@ -49,6 +49,6 @@ app.get('/index', (request, response) => {
     response.render('index', {kontakter});
 });
 
-app.listen(8000);
+app.listen(8989);
 
 console.log('Lytter på port 8000 ...');
